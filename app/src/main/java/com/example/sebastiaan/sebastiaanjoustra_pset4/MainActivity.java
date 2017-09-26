@@ -1,23 +1,29 @@
 package com.example.sebastiaan.sebastiaanjoustra_pset4;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "@@@@@MainActivity";
     DBHelper helper;
+    ListView lvItems;
     ArrayList<TodoItem> todoList;
-    TodoItem todoItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +36,45 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
+                startActivity(intent);
             }
         });
 
+        lvItems = (ListView) findViewById(R.id.lvItems);
+
         helper = new DBHelper(this);
-
-        todoItem = new TodoItem("call doctor");
-
-        Log.v(TAG, todoItem.getTitle());
-
-        helper.addRow(todoItem);
-
         todoList = helper.read();
 
-        Log.v(TAG, todoList.get(0).getTitle());
+        // Create adapter for the listview
+        ListAdapter adapter = new TodoListAdapter(this, todoList);
+        lvItems.setAdapter(adapter);
 
+        // Create listener on the listview
+        //lvItems.setOnItemClickListener(new ItemClickListener());
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.v(TAG, todoList.get(i).getTitle());
+            }
+        });
+
+    }
+
+    public void onChecked() {
+        Log.v(TAG, todoList.get(0).getTitle());
+    }
+
+    public class ItemClickListener implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Log.v(TAG, todoList.get(i).getTitle());
+
+            //TODO go to item view activity
+        }
     }
 
     @Override
@@ -64,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
