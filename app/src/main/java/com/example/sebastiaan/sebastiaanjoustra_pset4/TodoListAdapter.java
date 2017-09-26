@@ -1,5 +1,6 @@
 package com.example.sebastiaan.sebastiaanjoustra_pset4;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -20,8 +21,12 @@ import java.util.ArrayList;
 
 class TodoListAdapter extends ArrayAdapter<TodoItem> {
 
+    Context appContext;
+    DBHelper helper;
+
     public TodoListAdapter(Context context, ArrayList<TodoItem> todoItems) {
         super(context, R.layout.row, todoItems);
+        appContext = context;
     }
 
     @NonNull
@@ -29,6 +34,8 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View row = inflater.inflate(R.layout.row, parent, false);
+
+        helper = new DBHelper(appContext);
 
         final TodoItem listItem = getItem(position);
 
@@ -38,6 +45,11 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
         assert listItem != null;
         tvTitle.setText(listItem.getTitle());
 
+        if(listItem.isCompleted() == 1) {
+            tvTitle.setPaintFlags(tvTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            checkBoxView.setChecked(true);
+        }
+
 
         checkBoxView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,9 +58,11 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
                 if(checkBoxView.isChecked()) {
                     tvTitle.setPaintFlags(tvTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     listItem.setCompleted(1);
+                    helper.update(listItem);
                 } else {
                     tvTitle.setPaintFlags(tvTitle.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
                     listItem.setCompleted(0);
+                    helper.update(listItem);
                 }
 
             }

@@ -3,10 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.sebastiaan.sebastiaanjoustra_pset4.MainActivity">
 
-    <item
-        android:id="@+id/menuAddItem"
-        android:icon="@drawable/ic_add_white_24dp"
-        android:title="Add"
-        app:showAsAction="ifRoom"
-        />
+
 </menu>

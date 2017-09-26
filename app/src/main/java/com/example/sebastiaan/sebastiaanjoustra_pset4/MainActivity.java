@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,28 +42,19 @@ public class MainActivity extends AppCompatActivity {
 
         lvItems = (ListView) findViewById(R.id.lvItems);
 
-        helper = new DBHelper(this);
-        todoList = helper.read();
-
-        // Create adapter for the listview
-        ListAdapter adapter = new TodoListAdapter(this, todoList);
-        lvItems.setAdapter(adapter);
+        setAdapter();
 
         // Create listener on the listview
-        //lvItems.setOnItemClickListener(new ItemClickListener());
-
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.v(TAG, todoList.get(i).getTitle());
-            }
-        });
+        lvItems.setOnItemClickListener(new ItemClickListener());
 
     }
 
-    public void onChecked() {
-        Log.v(TAG, todoList.get(0).getTitle());
+    // Create adapter for the listview
+    public void setAdapter() {
+        helper = new DBHelper(this);
+        todoList = helper.read();
+        ListAdapter adapter = new TodoListAdapter(this, todoList);
+        lvItems.setAdapter(adapter);
     }
 
     public class ItemClickListener implements AdapterView.OnItemClickListener {
@@ -72,8 +62,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Log.v(TAG, todoList.get(i).getTitle());
-
-            //TODO go to item view activity
+            System.out.println(todoList.get(i).getId());
+//
+            Intent intent = new Intent(getApplicationContext(), TaskViewActivity.class);
+            intent.putExtra("todoIndex", i);
+            startActivity(intent);
         }
     }
 
@@ -92,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
+//        if (id == R.id.menuAddItem) {
+//            setAdapter();
 //        }
 
         return super.onOptionsItemSelected(item);

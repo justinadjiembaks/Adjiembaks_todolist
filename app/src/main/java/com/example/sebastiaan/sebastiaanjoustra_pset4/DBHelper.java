@@ -42,10 +42,12 @@ class DBHelper extends SQLiteOpenHelper{
 
     // Add new row to database
     public void addRow(TodoItem todoItem) {
+        SQLiteDatabase db = getWritableDatabase();
+        //onUpgrade(db, 1, 1);
         ContentValues values = new ContentValues();
         values.put(COLUMN_TITLE, todoItem.getTitle());
         values.put(COLUMN_COMPLETED, todoItem.isCompleted());
-        SQLiteDatabase db = getWritableDatabase();
+
         db.insert(TABLE, null, values);
         db.close();
     }
@@ -67,11 +69,11 @@ class DBHelper extends SQLiteOpenHelper{
         if(cursor.moveToFirst()) {
             do {
                 String title = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE));
-                String completed = cursor.getString(cursor.getColumnIndex(COLUMN_COMPLETED));
+                int completed = cursor.getInt(cursor.getColumnIndex(COLUMN_COMPLETED));
                 int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
 
                 // Create todoItem with the newly retrieved data
-                TodoItem todoItem = new TodoItem(title);
+                TodoItem todoItem = new TodoItem(title, completed, id);
                 todoItems.add(todoItem);
 
             } while(cursor.moveToNext());
@@ -89,20 +91,14 @@ class DBHelper extends SQLiteOpenHelper{
         values.put(COLUMN_TITLE, todoItem.getTitle());
         values.put(COLUMN_COMPLETED, todoItem.isCompleted());
 
-        return db.update(TABLE, values, COLUMN_ID + " = ? ", new String[] {
-                String.valueOf(todoItem.getId())
-        });
-
-
+        return db.update(TABLE, values, COLUMN_ID + " = ? ", new String[] { String.valueOf(todoItem.getId()) });
     }
 
     // Delete row from database
     public void deleteRow(TodoItem todoItem) {
         SQLiteDatabase db = getWritableDatabase();
 
-        db.delete(TABLE, " " + COLUMN_ID + " = ? ", new String[] {
-                String.valueOf(todoItem.getId())
-        });
+        db.delete(TABLE, " " + COLUMN_ID + " = ? ", new String[] { String.valueOf(todoItem.getId()) });
 
         db.close();
     }

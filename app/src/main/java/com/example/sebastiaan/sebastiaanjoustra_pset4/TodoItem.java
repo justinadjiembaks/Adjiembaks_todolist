@@ -11,9 +11,9 @@ class TodoItem {
         completed = 0;
     }
 
-    TodoItem(String todoTitle, int todoId) {
+    TodoItem(String todoTitle, int isCompleted, int todoId) {
         title = todoTitle;
-        completed = 0;
+        completed = isCompleted;
         _id = todoId;
     }
 
