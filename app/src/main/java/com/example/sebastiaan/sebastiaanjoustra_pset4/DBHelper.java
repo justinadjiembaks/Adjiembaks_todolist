@@ -43,7 +43,6 @@ class DBHelper extends SQLiteOpenHelper{
     // Add new row to database
     public void addRow(TodoItem todoItem) {
         SQLiteDatabase db = getWritableDatabase();
-        //onUpgrade(db, 1, 1);
         ContentValues values = new ContentValues();
         values.put(COLUMN_TITLE, todoItem.getTitle());
         values.put(COLUMN_COMPLETED, todoItem.isCompleted());
