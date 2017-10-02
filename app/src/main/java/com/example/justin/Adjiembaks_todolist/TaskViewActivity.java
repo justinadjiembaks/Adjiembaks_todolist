@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class TaskViewActivity extends AppCompatActivity {
 
-    EditText etTaskTitle;
+    EditText EdittextTaskTitle;
     ArrayList<TodoItem> todoList;
     CheckBox checkBox;
     DBHelper helper;
@@ -25,17 +25,15 @@ public class TaskViewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(com.example.justin.Adjiembaks_todolist.R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Get to-do item values
         Intent intent = this.getIntent();
         int index = intent.getIntExtra("todoIndex", 0);
         helper = new DBHelper(this);
         todoList = helper.read();
         todoItem = todoList.get(index);
 
-        // Initialize components
-        etTaskTitle = (EditText) findViewById(com.example.justin.Adjiembaks_todolist.R.id.etTaskTitle);
-        etTaskTitle.setText(todoItem.getTitle());
-        etTaskTitle.setSelection(todoItem.getTitle().length());
+        EdittextTaskTitle = (EditText) findViewById(com.example.justin.Adjiembaks_todolist.R.id.etTaskTitle);
+        EdittextTaskTitle.setText(todoItem.getTitle());
+        EdittextTaskTitle.setSelection(todoItem.getTitle().length());
         checkBox = (CheckBox) findViewById(com.example.justin.Adjiembaks_todolist.R.id.cbCompleted);
         if(todoItem.isCompleted() == 1) {
             checkBox.setChecked(true);
@@ -49,7 +47,7 @@ public class TaskViewActivity extends AppCompatActivity {
         } else {
             todoItem.setCompleted(0);
         }
-        todoItem.setTitle(etTaskTitle.getText().toString());
+        todoItem.setTitle(EdittextTaskTitle.getText().toString());
         helper.update(todoItem);
 
         Intent intent = new Intent(this, MainActivity.class);

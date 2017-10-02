@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.justin.Adjiembaks_todolist.AddItemActivity"
+            android:name="com.example.justin.Adjiembaks_todolist.NewItemActivity"
             android:label="Add a task!"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
