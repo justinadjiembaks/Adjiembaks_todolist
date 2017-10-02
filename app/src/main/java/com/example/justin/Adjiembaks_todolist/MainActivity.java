@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "@@@@@MainActivity";
+    private static final String TAG = "MainActivity";
     DBHelper helper;
     ListView lvItems;
     ArrayList<TodoItem> todoList;
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         setAdapter();
 
-        // Create listener on the listview
         lvItems.setOnItemClickListener(new ItemClickListener());
 
     }
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Create adapter for the listview
     public void setAdapter() {
         helper = new DBHelper(this);
         todoList = helper.read();
