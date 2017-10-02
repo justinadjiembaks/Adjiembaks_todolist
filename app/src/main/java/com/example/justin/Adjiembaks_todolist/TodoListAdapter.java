@@ -28,7 +28,6 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View row = inflater.inflate(com.example.justin.Adjiembaks_todolist.R.layout.row, parent, false);
-
         helper = new DBHelper(appContext);
 
         final TodoItem listItem = getItem(position);
@@ -44,7 +43,6 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
             checkBoxView.setChecked(true);
         }
 
-
         checkBoxView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,10 +56,8 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
                     listItem.setCompleted(0);
                     helper.update(listItem);
                 }
-
             }
         });
-
         return row;
     }
 }

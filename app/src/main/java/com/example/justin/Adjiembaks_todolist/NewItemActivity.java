@@ -18,7 +18,7 @@ public class NewItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.justin.Adjiembaks_todolist.R.layout.activity_add_item);
+        setContentView(com.example.justin.Adjiembaks_todolist.R.layout.activity_new_item);
         Toolbar toolbar = (Toolbar) findViewById(com.example.justin.Adjiembaks_todolist.R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,8 +36,9 @@ public class NewItemActivity extends AppCompatActivity {
             todoItem = new TodoItem(todoItemString);
             DBHelper helper = new DBHelper(this);
             helper.addRow(todoItem);
-
             Intent intent = new Intent(this, MainActivity.class);
+            Toast.makeText(this.getApplicationContext(), "Added",
+                    Toast.LENGTH_SHORT).show();
             startActivity(intent);
             finish();
         }

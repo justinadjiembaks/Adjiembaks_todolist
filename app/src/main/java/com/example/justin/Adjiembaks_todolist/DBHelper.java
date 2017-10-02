@@ -18,7 +18,6 @@ class DBHelper extends SQLiteOpenHelper{
     private static final String COLUMN_COMPLETED = "completed";
 
 
-
     DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -28,8 +27,7 @@ class DBHelper extends SQLiteOpenHelper{
         String query = "CREATE TABLE " + TABLE + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TITLE + " TEXT NOT NULL,"
-                + COLUMN_COMPLETED + " BOOL NOT NULL" +
-                ");";
+                + COLUMN_COMPLETED + " BOOL NOT NULL" + ");";
 
         db.execSQL(query);
     }
@@ -51,7 +49,6 @@ class DBHelper extends SQLiteOpenHelper{
         db.close();
     }
 
-    // Read database
     public ArrayList<TodoItem> read() {
         SQLiteDatabase db = getReadableDatabase();
 
@@ -64,14 +61,12 @@ class DBHelper extends SQLiteOpenHelper{
 
         Cursor cursor = db.rawQuery(query, null);
 
-        // Set cursor to beginning of databsae
         if(cursor.moveToFirst()) {
             do {
                 String title = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE));
                 int completed = cursor.getInt(cursor.getColumnIndex(COLUMN_COMPLETED));
                 int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
 
-                // Create todoItem with the newly retrieved data
                 TodoItem todoItem = new TodoItem(title, completed, id);
                 todoItems.add(todoItem);
 
@@ -90,14 +85,15 @@ class DBHelper extends SQLiteOpenHelper{
         values.put(COLUMN_TITLE, todoItem.getTitle());
         values.put(COLUMN_COMPLETED, todoItem.isCompleted());
 
-        return db.update(TABLE, values, COLUMN_ID + " = ? ", new String[] { String.valueOf(todoItem.getId()) });
+        return db.update(TABLE, values, COLUMN_ID +
+                " = ? ", new String[] { String.valueOf(todoItem.getId()) });
     }
 
-    // Delete row from database
     public void deleteRow(TodoItem todoItem) {
         SQLiteDatabase db = getWritableDatabase();
 
-        db.delete(TABLE, " " + COLUMN_ID + " = ? ", new String[] { String.valueOf(todoItem.getId()) });
+        db.delete(TABLE, " " + COLUMN_ID +
+                " = ? ", new String[] { String.valueOf(todoItem.getId()) });
 
         db.close();
     }

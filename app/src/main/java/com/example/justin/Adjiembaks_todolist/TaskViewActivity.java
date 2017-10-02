@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -51,6 +52,8 @@ public class TaskViewActivity extends AppCompatActivity {
         helper.update(todoItem);
 
         Intent intent = new Intent(this, MainActivity.class);
+        Toast.makeText(this.getApplicationContext(), "Edited",
+                Toast.LENGTH_SHORT).show();
         startActivity(intent);
         finish();
     }
@@ -58,6 +61,9 @@ public class TaskViewActivity extends AppCompatActivity {
     public void clickedDelete(View view) {
         helper.deleteRow(todoItem);
         Intent intent = new Intent(this, MainActivity.class);
+
+        Toast.makeText(this.getApplicationContext(), "Deleted",
+                Toast.LENGTH_SHORT).show();
         startActivity(intent);
         finish();
     }

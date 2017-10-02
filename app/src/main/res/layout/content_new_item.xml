@@ -8,18 +8,8 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.justin.Adjiembaks_todolist.NewItemActivity"
-    tools:showIn="@layout/activity_add_item"
+    tools:showIn="@layout/activity_new_item"
     android:padding="16dp">
-
-
-    <TextView
-        android:id="@+id/tvAddItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/colorPrimary"
-        android:text="Add a task"
-        android:paddingBottom="16dp"/>
 
     <EditText
         android:id="@+id/etAddItem"
