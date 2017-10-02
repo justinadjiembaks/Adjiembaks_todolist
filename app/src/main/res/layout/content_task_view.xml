@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.sebastiaan.sebastiaanjoustra_pset4.TaskViewActivity"
+    tools:context="com.example.justin.Adjiembaks_todolist.TaskViewActivity"
     tools:showIn="@layout/activity_task_view"
     android:orientation="vertical"
     android:padding="16dp">
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/colorPrimary"
-        android:text="@string/description"
+        android:text="Edit"
         android:paddingBottom="16dp"/>
 
     <EditText
@@ -29,7 +29,7 @@
         android:id="@+id/cbCompleted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mark_as_complete"/>
+        android:text="COMPLETED"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,13 +41,13 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:text="@string/done"
+            android:text="Done"
             android:onClick="clickedDone"/>
 
         <Button
             android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:text="@string/delete"
+            android:text="Delete"
             android:onClick="clickedDelete"/>
 
     </LinearLayout>

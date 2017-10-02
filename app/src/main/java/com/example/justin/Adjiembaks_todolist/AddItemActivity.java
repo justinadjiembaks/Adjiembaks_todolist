@@ -1,9 +1,7 @@
-package com.example.sebastiaan.sebastiaanjoustra_pset4;
+package com.example.justin.Adjiembaks_todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -19,12 +17,12 @@ public class AddItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_item);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(com.example.justin.Adjiembaks_todolist.R.layout.activity_add_item);
+        Toolbar toolbar = (Toolbar) findViewById(com.example.justin.Adjiembaks_todolist.R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        etTodo = (EditText) findViewById(R.id.etAddItem);
-        btAdd = (Button) findViewById(R.id.btAddItem);
+        etTodo = (EditText) findViewById(com.example.justin.Adjiembaks_todolist.R.id.etAddItem);
+        btAdd = (Button) findViewById(com.example.justin.Adjiembaks_todolist.R.id.btAddItem);
     }
 
     public void addItem(View view) {

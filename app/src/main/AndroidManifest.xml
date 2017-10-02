@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sebastiaan.sebastiaanjoustra_pset4">
+    package="com.example.justin.Adjiembaks_todolist">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/plus"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/plus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/home_title"
+            android:name="com.example.justin.Adjiembaks_todolist.MainActivity"
+            android:label="To Do List"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddItemActivity"
-            android:label="@string/title_activity_add_item"
+            android:name="com.example.justin.Adjiembaks_todolist.AddItemActivity"
+            android:label="Add a task!"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TaskViewActivity"
-            android:label="@string/title_activity_task_view"
+            android:name="com.example.justin.Adjiembaks_todolist.TaskViewActivity"
+            android:label="Edit Task"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

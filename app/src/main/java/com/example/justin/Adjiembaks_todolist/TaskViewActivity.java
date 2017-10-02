@@ -1,9 +1,7 @@
-package com.example.sebastiaan.sebastiaanjoustra_pset4;
+package com.example.justin.Adjiembaks_todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,8 +21,8 @@ public class TaskViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_view);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(com.example.justin.Adjiembaks_todolist.R.layout.activity_task_view);
+        Toolbar toolbar = (Toolbar) findViewById(com.example.justin.Adjiembaks_todolist.R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // Get to-do item values
@@ -35,10 +33,10 @@ public class TaskViewActivity extends AppCompatActivity {
         todoItem = todoList.get(index);
 
         // Initialize components
-        etTaskTitle = (EditText) findViewById(R.id.etTaskTitle);
+        etTaskTitle = (EditText) findViewById(com.example.justin.Adjiembaks_todolist.R.id.etTaskTitle);
         etTaskTitle.setText(todoItem.getTitle());
         etTaskTitle.setSelection(todoItem.getTitle().length());
-        checkBox = (CheckBox) findViewById(R.id.cbCompleted);
+        checkBox = (CheckBox) findViewById(com.example.justin.Adjiembaks_todolist.R.id.cbCompleted);
         if(todoItem.isCompleted() == 1) {
             checkBox.setChecked(true);
         }

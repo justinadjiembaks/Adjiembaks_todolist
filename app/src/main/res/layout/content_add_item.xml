@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.sebastiaan.sebastiaanjoustra_pset4.AddItemActivity"
+    tools:context="com.example.justin.Adjiembaks_todolist.AddItemActivity"
     tools:showIn="@layout/activity_add_item"
     android:padding="16dp">
 
@@ -18,14 +18,14 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/colorPrimary"
-        android:text="@string/what_to_do"
+        android:text="Add a task"
         android:paddingBottom="16dp"/>
 
     <EditText
         android:id="@+id/etAddItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/to_do_description"
+        android:hint="Fill in task"
         android:inputType="textCapSentences"
         android:paddingBottom="16dp"/>
 
@@ -34,6 +34,6 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
-        android:text="@string/add"
+        android:text="Add"
         android:onClick="addItem"/>
 </LinearLayout>

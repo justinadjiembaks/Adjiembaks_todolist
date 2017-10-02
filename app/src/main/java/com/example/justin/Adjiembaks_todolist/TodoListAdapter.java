@@ -1,21 +1,15 @@
-package com.example.sebastiaan.sebastiaanjoustra_pset4;
+package com.example.justin.Adjiembaks_todolist;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -25,7 +19,7 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
     DBHelper helper;
 
     public TodoListAdapter(Context context, ArrayList<TodoItem> todoItems) {
-        super(context, R.layout.row, todoItems);
+        super(context, com.example.justin.Adjiembaks_todolist.R.layout.row, todoItems);
         appContext = context;
     }
 
@@ -33,14 +27,14 @@ class TodoListAdapter extends ArrayAdapter<TodoItem> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View row = inflater.inflate(R.layout.row, parent, false);
+        View row = inflater.inflate(com.example.justin.Adjiembaks_todolist.R.layout.row, parent, false);
 
         helper = new DBHelper(appContext);
 
         final TodoItem listItem = getItem(position);
 
-        final TextView tvTitle = (TextView) row.findViewById(R.id.tvRowTitle);
-        final CheckBox checkBoxView = (CheckBox) row.findViewById(R.id.checkBox);
+        final TextView tvTitle = (TextView) row.findViewById(com.example.justin.Adjiembaks_todolist.R.id.tvRowTitle);
+        final CheckBox checkBoxView = (CheckBox) row.findViewById(com.example.justin.Adjiembaks_todolist.R.id.checkBox);
 
         assert listItem != null;
         tvTitle.setText(listItem.getTitle());
